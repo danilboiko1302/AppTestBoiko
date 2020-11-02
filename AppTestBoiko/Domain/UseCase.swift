@@ -19,7 +19,7 @@ class UseCase{
         } else{
             post = Post()
         }
-        View.res = post.description
+       // View.res = post.description
         
     }
 }
