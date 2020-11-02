@@ -7,10 +7,15 @@
 
 import Foundation
 class UseCase{
+    static var  data:Post = Post()
+    
+    
     static func requestForUpdate (){
         print("I am UseCase, I need to get new Information from Repository.")
         Repository.requestForUpdate()
     }
+   
+    
     static func update(data: PostStr?){
         print("I am UseCase, I got new information from Repository, I will process it and update View")
         var post:Post
@@ -19,7 +24,9 @@ class UseCase{
         } else{
             post = Post()
         }
-       // View.res = post.description
-        
+        self.data = post
+        NotificationCenter.default.post(Notification(name: notificationName))
     }
 }
+
+
