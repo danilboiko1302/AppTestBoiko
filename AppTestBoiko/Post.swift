@@ -82,9 +82,10 @@ struct PostStr{
     var ups: String = ""
     var downs: String = ""
     var thumbnail: String = ""
+    var saved: Bool = false
     var description: String {
         return """
-        Author: \(author), domain: \(domain), created: \(created), title: \(title), numComments: \(numComments), ups: \(ups), downs: \(downs), thumbnail: \(thumbnail)
+        Author: \(author), domain: \(domain), created: \(created), title: \(title), numComments: \(numComments), ups: \(ups), downs: \(downs), thumbnail: \(thumbnail), saved \(saved)
         """
     }
 }
@@ -97,9 +98,10 @@ struct Post {
     var ups: Int = 0
     var downs: Int = 0
     var thumbnail: String = ""
+    var saved: Bool = false
     var description: String {
         return """
-        Author: \(author), domain: \(domain), created: \(created), title: \(title), numComments: \(numComments), ups: \(ups), downs: \(downs), thumbnail: \(thumbnail)
+        Author: \(author), domain: \(domain), created: \(created), title: \(title), numComments: \(numComments), ups: \(ups), downs: \(downs), thumbnail: \(thumbnail), saved \(saved)
         """
     }
 }
