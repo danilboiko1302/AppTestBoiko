@@ -8,7 +8,7 @@
 import Foundation
 class HTTPService{
     static func getRequest(url:String, params:[String] = [], paramsKeyValue:[String:String] = [:]) {
-        print("I am HTTPService, I need to create request and HTTPRequest will send it.")
+        //print("I am HTTPService, I need to create request and HTTPRequest will send it.")
         var url = url
         for key in params{
             url = url + "/" + key
@@ -23,10 +23,21 @@ class HTTPService{
         }
         HTTPRequester.getRequest(url,completionHandler: { ( data) -> Void in
             if let data = data{
-                print("I am HTTPService, I got new data from HTTPRequest, I will parse it and update it in PersistenceManager.")
+                //print("I am HTTPService, I got new data from HTTPRequest, I will parse it and update it in PersistenceManager.")
                 decode(data)
             }
         })
+        
+    }
+    static func loadImage(url:String){
+        //print("HTTPRequester.loadImage")
+        let urlReq = URL(string: url)!
+        HTTPRequester.loadImage(url: urlReq) { (data) in
+            if let data = data{
+            //    print("get")
+                PersistenceManager.image = data
+            }
+        }
         
     }
     static func decode(_ data:Data){
