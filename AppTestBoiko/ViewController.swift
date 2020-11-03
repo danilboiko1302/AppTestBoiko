@@ -6,91 +6,93 @@
 //
 
 import UIKit
-let notificationPost = Notification.Name("ua.edu.ukma.test.notification")
-let notificationImage = Notification.Name("ua.edu.ukma.test.notificationImage")
-class ViewController: UIViewController {
-
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var time: UILabel!
-    @IBOutlet weak var domain: UILabel!
-    @IBOutlet weak var titleName: UILabel!
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var likes: UILabel!
-    @IBOutlet weak var comments: UILabel!
-    @IBOutlet weak var bookmark: UIButton!
-    @IBOutlet weak var ViewImage: UIView!
-    let main = DispatchQueue.main
-    @objc
-    func updatePostNotification() {
-        updatePost()
-        }
-    @objc
-    func updateImageNotification() {
-        updateImage()
-        }
+protocol Delegate {
+    func updateUserName(_ str:String)
+    func updateTime(_ str:String)
+    func updateDomain(_ str:String)
+    func updateTitle(_ str:String)
+    func updateImage(_ image:Data)
+    func updateLikes(_ str:String)
+    func updateComments(_ str:String)
+}
+class ViewController: UIViewController, Delegate {
     
-    func updateImage(){
-        let image = UseCase.image
-        DispatchQueue.main.async() { [weak self] in
-            self!.image.image = UIImage(data: image)
-           // self!.ViewImage.setB
-        }
+    func onButtonTap() {
+        print("This button was clicked in the subview!")
     }
-    @IBAction func bookmarkPress(_ sender: Any) {
+    private let main = DispatchQueue.main
+    
+    @IBOutlet private weak var userName: UILabel!
+    @IBOutlet private weak var time: UILabel!
+    @IBOutlet private weak var domain: UILabel!
+    @IBOutlet private weak var titleName: UILabel!
+    @IBOutlet private weak var image: UIImageView!
+    @IBOutlet private weak var likes: UILabel!
+    @IBOutlet private weak var comments: UILabel!
+    @IBOutlet private weak var bookmark: UIButton!
+    @IBOutlet private weak var ViewImage: UIView!
+    
+    @IBAction private func bookmarkPress(_ sender: Any) {
         bookmark.isSelected = !bookmark.isSelected
         UseCase.saved()
     }
-    func updatePost(){
-       
-        let post = UseCase.data
-        var timeInterval = post.created.timeIntervalSinceNow
-        var timeStr = ""
-        timeInterval = -timeInterval
-        if(timeInterval < 60){
-            timeStr = "\(Int(timeInterval)) sec"
-        } else if(timeInterval < 3600){
-            timeStr = "\(Int(timeInterval/60)) min"
-        }  else if(timeInterval < (3600 * 24)){
-            timeStr = "\(Int(timeInterval/3600)) hour"
-        } else if(timeInterval < (3600  * 24*7)){
-            timeStr = "\(Int(timeInterval/3600/24)) days"
-        } else if(timeInterval < (2592000)){
-            timeStr = "\(Int(timeInterval/3600/24/7)) weeks"
-        } else if(timeInterval < (31556926)){
-            timeStr = "\(Int(timeInterval/3600/24/7/4)) months"
-        } else {
-            timeStr = "\(Int(timeInterval/3600/24/7/4/12)) years"
+    
+    func updateUserName(_ str:String){
+        main.async {
+            self.userName.text = str
+        }
+    }
+    func updateTime(_ str:String){
+        main.async {
+            self.time.text = str
+        }
+    }
+    func updateDomain(_ str:String){
+        main.async {
+            self.domain.text = str
+        }
+    }
+    func updateTitle(_ str:String){
+        main.async {
+            self.titleName.text = str
         }
         
-    
+    }
+    func updateImage(_ image:Data){
         main.async {
-            self.userName.text = post.author
-            self.time.text = timeStr
-            self.domain.text = post.domain
-            self.titleName.text = post.title
-            self.likes.text = post.ups.description
-            self.comments.text = post.numComments.description
-          
+            self.image.image = UIImage(data: image)
         }
-       
+    }
+    func updateLikes(_ str:String){
+        main.async {
+            self.likes.text = str
+        }
+    }
+    func updateComments(_ str:String){
+        main.async {
+            self.comments.text = str
+        }
     }
     
+    
+    private var myViewModel:MyViewModel = MyViewModel()
+    //override func view
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updatePostNotification),
-                                               name: notificationPost, object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateImageNotification),
-                                               name: notificationImage, object: nil)
-        UseCase.requestForUpdate()
+//        myViewModel.update()
+//        myViewModel.delegate = self
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        //super.viewWillAppear(animated)()
+        myViewModel.update()
+        myViewModel.delegate = self
+        
     }
     
     
     
-
 }
 
 
