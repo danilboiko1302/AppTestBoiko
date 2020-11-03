@@ -204,6 +204,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ViewImage" destination="Pnk-oh-EvS" id="3Fn-cS-sNj"/>
                         <outlet property="bookmark" destination="Mdo-mW-0cE" id="r44-wi-yXL"/>
                         <outlet property="comments" destination="REv-f0-d5V" id="uhD-Gf-jyu"/>
                         <outlet property="domain" destination="c26-wv-iBe" id="dZn-Nh-XmN"/>

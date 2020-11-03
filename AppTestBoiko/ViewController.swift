@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var likes: UILabel!
     @IBOutlet weak var comments: UILabel!
     @IBOutlet weak var bookmark: UIButton!
+    @IBOutlet weak var ViewImage: UIView!
     let main = DispatchQueue.main
     @objc
     func updatePostNotification() {
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
         let image = UseCase.image
         DispatchQueue.main.async() { [weak self] in
             self!.image.image = UIImage(data: image)
+           // self!.ViewImage.setB
         }
     }
     @IBAction func bookmarkPress(_ sender: Any) {
