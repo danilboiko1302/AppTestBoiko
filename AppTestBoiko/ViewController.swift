@@ -22,6 +22,7 @@ class ViewController: UIViewController, Delegate {
     }
     private let main = DispatchQueue.main
     
+    
     @IBOutlet private weak var userName: UILabel!
     @IBOutlet private weak var time: UILabel!
     @IBOutlet private weak var domain: UILabel!

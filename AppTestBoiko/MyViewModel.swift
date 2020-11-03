@@ -46,7 +46,10 @@ class MyViewModel {
         let post = UseCase.data
         var timeInterval = post.created.timeIntervalSinceNow
         var timeStr = ""
-        timeInterval = -timeInterval
+        if(timeInterval < 0 ){
+            timeInterval = -timeInterval
+        }
+      
         if(timeInterval < 60){
             timeStr = "\(Int(timeInterval)) sec"
         } else if(timeInterval < 3600){
