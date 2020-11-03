@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcE-Z1-m5L">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcE-Z1-m5L">
                                 <rect key="frame" x="57" y="303" width="300" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YjG-82-nFN">
@@ -26,23 +26,35 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10N-iS-PQQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hI5-cT-tXt">
-                                                        <rect key="frame" x="150" y="0.0" width="41.5" height="50"/>
+                                                        <rect key="frame" x="120" y="0.0" width="41.5" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBP-69-dQC">
-                                                        <rect key="frame" x="191.5" y="0.0" width="108.5" height="50"/>
+                                                        <rect key="frame" x="161.5" y="0.0" width="98.5" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqM-ue-l5k">
+                                                        <rect key="frame" x="260" y="0.0" width="40" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="ZPw-A3-6fz"/>
+                                                            <constraint firstAttribute="height" constant="50" id="ja7-ve-TGT"/>
+                                                        </constraints>
+                                                        <state key="normal" image="bookmark" catalog="system"/>
+                                                        <state key="selected" image="bookmark.fill" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="bookmarkPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s4i-XS-eRO"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 <constraints>
@@ -51,7 +63,7 @@
                                                     <constraint firstItem="qBP-69-dQC" firstAttribute="width" secondItem="hI5-cT-tXt" secondAttribute="width" id="Xfb-aH-7lx"/>
                                                     <constraint firstItem="10N-iS-PQQ" firstAttribute="top" secondItem="g0x-h7-8rV" secondAttribute="top" id="YlD-rE-tfD"/>
                                                     <constraint firstItem="10N-iS-PQQ" firstAttribute="leading" secondItem="g0x-h7-8rV" secondAttribute="leading" id="adR-1w-gPS"/>
-                                                    <constraint firstItem="10N-iS-PQQ" firstAttribute="width" relation="lessThanOrEqual" secondItem="g0x-h7-8rV" secondAttribute="width" multiplier="0.5" id="fPg-dc-1wB"/>
+                                                    <constraint firstItem="10N-iS-PQQ" firstAttribute="width" relation="lessThanOrEqual" secondItem="g0x-h7-8rV" secondAttribute="width" multiplier="0.4" id="fPg-dc-1wB"/>
                                                     <constraint firstAttribute="height" constant="50" id="prD-sz-Nbw"/>
                                                 </constraints>
                                                 <variation key="default">
@@ -116,8 +128,8 @@
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="BTz-cj-gr0"/>
                                                         <exclude reference="1Oa-CF-Ofh"/>
+                                                        <exclude reference="BTz-cj-gr0"/>
                                                         <exclude reference="XaI-aS-9sD"/>
                                                     </mask>
                                                 </variation>
@@ -145,11 +157,16 @@
                                     <constraint firstAttribute="width" constant="300" id="kUn-P6-t5J"/>
                                     <constraint firstAttribute="bottom" secondItem="YjG-82-nFN" secondAttribute="bottom" id="xKT-KQ-lDy"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="4Cb-gK-lEp"/>
-                                        <exclude reference="ZGW-r1-0wf"/>
                                         <exclude reference="PBn-5T-LmK"/>
+                                        <exclude reference="ZGW-r1-0wf"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -162,6 +179,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bookmark" destination="cqM-ue-l5k" id="j23-MA-wyA"/>
                         <outlet property="comments" destination="X1r-sf-8oC" id="kAO-rv-gCY"/>
                         <outlet property="domain" destination="qBP-69-dQC" id="i1f-8b-AcB"/>
                         <outlet property="image" destination="jKz-Dm-aSD" id="Ksq-FD-hbR"/>
@@ -177,6 +195,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
