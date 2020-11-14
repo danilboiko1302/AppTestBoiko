@@ -17,11 +17,10 @@ protocol Delegate {
 }
 class ViewController: UIViewController, Delegate {
     
-    func onButtonTap() {
-        print("This button was clicked in the subview!")
-    }
+    
     private let main = DispatchQueue.main
     
+    private var position: Int = 0
     
     @IBOutlet private weak var userName: UILabel!
     @IBOutlet private weak var time: UILabel!
@@ -33,19 +32,44 @@ class ViewController: UIViewController, Delegate {
     @IBOutlet private weak var bookmark: UIButton!
     @IBOutlet private weak var ViewImage: UIView!
     
+    @IBOutlet private weak var BShare: UIButton!
+    @IBAction func BShare_click(_ sender: Any) {
+        //print("WTF")
+    }
     @IBAction private func bookmarkPress(_ sender: Any) {
         bookmark.isSelected = !bookmark.isSelected
-        UseCase.saved()
+        UseCase.saved(name: userName!.text!, title: titleName!.text!)
     }
+    
+    func updateFull(_ post:Post, pos:Int){
+        position = pos
+        updateTitle(post.title)
+        updateTime(post.createdStr)
+        if let data = post.image{
+            updateImage(data)
+        } else{
+            main.async {
+                self.image.image = UIImage(systemName: "nosign")
+            }
+        }
+        
+       
+        updateDomain(post.domain)
+        updateLikes("\u{1F44D}" + (post.ups - post.downs).description)
+        updateComments("\u{1F4AC}" + post.numComments.description)
+        updateUserName(post.author)
+        updateBookmark(post.saved)
+    }
+    
     
     func updateUserName(_ str:String){
         main.async {
-            self.userName.text = str
+            self.userName.text = " " + str
         }
     }
     func updateTime(_ str:String){
         main.async {
-            self.time.text = str
+            self.time.text = " " + str + "  "
         }
     }
     func updateDomain(_ str:String){
@@ -74,9 +98,14 @@ class ViewController: UIViewController, Delegate {
             self.comments.text = str
         }
     }
+    func updateBookmark(_ bool:Bool){
+        main.async {
+            self.bookmark.isSelected = bool
+        }
+    }
     
     
-    private var myViewModel:MyViewModel = MyViewModel()
+    
     //override func view
     override func viewDidLoad() {
         
@@ -87,8 +116,7 @@ class ViewController: UIViewController, Delegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         //super.viewWillAppear(animated)()
-        myViewModel.update()
-        myViewModel.delegate = self
+       
         
     }
     

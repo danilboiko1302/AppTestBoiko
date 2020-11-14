@@ -7,18 +7,13 @@
 
 import Foundation
 class PersistenceManager{
-    static var res:PostStr? = nil{
+    static var count:Int = 0
+    static var resData:[PostStr] = [] {
         didSet{
-           // print("I am PersistenceManager, HTTPService updated info, I will give new info back to Repository.")
-            print(res!.saved)
-            Repository.updatePost()
+                Repository.updatePostArr()
         }
     }
-    static var image:Data? = nil{
-        didSet{
-          //  print("Repository.updateImage()")
-            Repository.updateImage()
-        }
-    }
+    
+   
 }
 

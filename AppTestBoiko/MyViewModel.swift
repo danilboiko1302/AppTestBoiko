@@ -11,10 +11,11 @@ let notificationImage = Notification.Name("ua.edu.ukma.test.notificationImage")
 class MyViewModel {
     
     var delegate:Delegate?
-    
+    var delegateArr:DelegateArr?
     
     func update(){
         UseCase.requestForUpdate()
+        
         
     }
     init(){
@@ -42,34 +43,63 @@ class MyViewModel {
     }
     
     func updatePost(){
-        
-        let post = UseCase.data
-        var timeInterval = post.created.timeIntervalSinceNow
-        var timeStr = ""
-        if(timeInterval < 0 ){
-            timeInterval = -timeInterval
+        var posts: [Post] = []
+        for post in UseCase.dataArr {
+            if(post.saved){
+                print("saved")
+            }
+            var timeInterval = post.created.timeIntervalSinceNow
+                    var timeStr = ""
+                    if(timeInterval < 0 ){
+                        timeInterval = -timeInterval
+                    }
+            
+                    if(timeInterval < 60){
+                        timeStr = "\(Int(timeInterval)) sec"
+                    } else if(timeInterval < 3600){
+                        timeStr = "\(Int(timeInterval/60)) min"
+                    }  else if(timeInterval < (3600 * 24)){
+                        timeStr = "\(Int(timeInterval/3600)) hour"
+                    } else if(timeInterval < (3600  * 24*7)){
+                        timeStr = "\(Int(timeInterval/3600/24)) days"
+                    } else if(timeInterval < (2592000)){
+                        timeStr = "\(Int(timeInterval/3600/24/7)) weeks"
+                    } else if(timeInterval < (31556926)){
+                        timeStr = "\(Int(timeInterval/3600/24/7/4)) months"
+                    } else {
+                        timeStr = "\(Int(timeInterval/3600/24/7/4/12)) years"
+                    }
+            
+            posts.append(Post(author: post.author, domain: post.domain,  createdStr: timeStr, title: post.title, numComments: post.numComments, ups: post.ups, downs: post.downs, thumbnail: post.thumbnail, image: post.image, saved: post.saved))
         }
-      
-        if(timeInterval < 60){
-            timeStr = "\(Int(timeInterval)) sec"
-        } else if(timeInterval < 3600){
-            timeStr = "\(Int(timeInterval/60)) min"
-        }  else if(timeInterval < (3600 * 24)){
-            timeStr = "\(Int(timeInterval/3600)) hour"
-        } else if(timeInterval < (3600  * 24*7)){
-            timeStr = "\(Int(timeInterval/3600/24)) days"
-        } else if(timeInterval < (2592000)){
-            timeStr = "\(Int(timeInterval/3600/24/7)) weeks"
-        } else if(timeInterval < (31556926)){
-            timeStr = "\(Int(timeInterval/3600/24/7/4)) months"
-        } else {
-            timeStr = "\(Int(timeInterval/3600/24/7/4/12)) years"
-        }
-        delegate?.updateComments("\u{1F4AC}" + post.numComments.description)
-        delegate?.updateDomain(post.domain)
-        delegate?.updateLikes("\u{1F44D}" + post.ups.description)
-        delegate?.updateTime(timeStr)
-        delegate?.updateTitle(post.title)
-        delegate?.updateUserName(post.author)
+//        let post = UseCase.data
+//        var timeInterval = post.created.timeIntervalSinceNow
+//        var timeStr = ""
+//        if(timeInterval < 0 ){
+//            timeInterval = -timeInterval
+//        }
+//
+//        if(timeInterval < 60){
+//            timeStr = "\(Int(timeInterval)) sec"
+//        } else if(timeInterval < 3600){
+//            timeStr = "\(Int(timeInterval/60)) min"
+//        }  else if(timeInterval < (3600 * 24)){
+//            timeStr = "\(Int(timeInterval/3600)) hour"
+//        } else if(timeInterval < (3600  * 24*7)){
+//            timeStr = "\(Int(timeInterval/3600/24)) days"
+//        } else if(timeInterval < (2592000)){
+//            timeStr = "\(Int(timeInterval/3600/24/7)) weeks"
+//        } else if(timeInterval < (31556926)){
+//            timeStr = "\(Int(timeInterval/3600/24/7/4)) months"
+//        } else {
+//            timeStr = "\(Int(timeInterval/3600/24/7/4/12)) years"
+//        }
+//        delegate?.updateComments("\u{1F4AC}" + post.numComments.description)
+//        delegate?.updateDomain(post.domain)
+//        delegate?.updateLikes("\u{1F44D}" + post.ups.description)
+//        delegate?.updateTime(timeStr)
+//        delegate?.updateTitle(post.title)
+//        delegate?.updateUserName(post.author)
+        delegateArr?.update(posts)
     }
 }

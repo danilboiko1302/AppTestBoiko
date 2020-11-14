@@ -13,6 +13,8 @@
 		DF3130952550B31700E40993 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31308E2550B31700E40993 /* Repository.swift */; };
 		DF3130962550B31700E40993 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31308F2550B31700E40993 /* HTTPService.swift */; };
 		DF3130972550B31700E40993 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3130912550B31700E40993 /* UseCase.swift */; };
+		DFCBF6A1255FFDE100CD1A2C /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCBF6A0255FFDE100CD1A2C /* PostTableViewController.swift */; };
+		DFCBF6A4255FFE0C00CD1A2C /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCBF6A3255FFE0C00CD1A2C /* PostTableViewCell.swift */; };
 		DFD23ED52551817400583AB1 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD23ED42551817400583AB1 /* MyViewModel.swift */; };
 		DFF5A376254F06020011D7DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5A375254F06020011D7DC /* AppDelegate.swift */; };
 		DFF5A378254F06020011D7DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5A377254F06020011D7DC /* SceneDelegate.swift */; };
@@ -29,6 +31,8 @@
 		DF31308E2550B31700E40993 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		DF31308F2550B31700E40993 /* HTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		DF3130912550B31700E40993 /* UseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		DFCBF6A0255FFDE100CD1A2C /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
+		DFCBF6A3255FFE0C00CD1A2C /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		DFD23ED42551817400583AB1 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 		DFF5A372254F06020011D7DC /* AppTestBoiko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppTestBoiko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF5A375254F06020011D7DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				DFF5A380254F06030011D7DC /* LaunchScreen.storyboard */,
 				DFF5A383254F06030011D7DC /* Info.plist */,
 				DFD23ED42551817400583AB1 /* MyViewModel.swift */,
+				DFCBF6A0255FFDE100CD1A2C /* PostTableViewController.swift */,
+				DFCBF6A3255FFE0C00CD1A2C /* PostTableViewCell.swift */,
 			);
 			path = AppTestBoiko;
 			sourceTree = "<group>";
@@ -182,8 +188,10 @@
 				DF3130942550B31700E40993 /* PersistenceManager.swift in Sources */,
 				DF3130962550B31700E40993 /* HTTPService.swift in Sources */,
 				DF3130972550B31700E40993 /* UseCase.swift in Sources */,
+				DFCBF6A1255FFDE100CD1A2C /* PostTableViewController.swift in Sources */,
 				DFF5A378254F06020011D7DC /* SceneDelegate.swift in Sources */,
 				DF3130922550B31700E40993 /* Post.swift in Sources */,
+				DFCBF6A4255FFE0C00CD1A2C /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

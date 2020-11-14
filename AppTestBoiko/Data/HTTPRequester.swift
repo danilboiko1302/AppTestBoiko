@@ -42,7 +42,20 @@ class HTTPRequester{
         }
         
     }
-  
+    static func loadImage(url:URL)->Data?{
+        return try? Data(contentsOf: url)
+//        DispatchQueue.global().async {
+//                    if let data = try? Data(contentsOf: url) {
+//                        if let image = UIImage(data: data) {
+//                            Dispatch.DispatchQueue.main.async {
+//                                self?.image.image = image
+//                            }
+//                        }
+//                    }
+//                }
+//        return nil;
+        
+    }
     
     
     static func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
