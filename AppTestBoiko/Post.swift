@@ -123,7 +123,7 @@ struct PostStr: Codable{
         thumbnail = try container.decode(String.self, forKey: .thumbnail)
         saved = try container.decode(Bool.self, forKey: .saved)
       }
-    init(author: String, domain: String, created: String, title: String, numComments: String, ups: String, downs: String, thumbnail: String){
+    init(author: String, domain: String, created: String, title: String, numComments: String, ups: String, downs: String, thumbnail: String, saved: Bool){
         self.author = author
         self.domain = domain
         self.created = created
@@ -132,6 +132,7 @@ struct PostStr: Codable{
         self.ups = ups
         self.downs = downs
         self.thumbnail = thumbnail
+        self.saved = saved
         
     }
     

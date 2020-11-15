@@ -13,6 +13,7 @@
 		DF3130952550B31700E40993 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31308E2550B31700E40993 /* Repository.swift */; };
 		DF3130962550B31700E40993 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31308F2550B31700E40993 /* HTTPService.swift */; };
 		DF3130972550B31700E40993 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3130912550B31700E40993 /* UseCase.swift */; };
+		DF48B6CE25614F5B00950D7F /* JSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF48B6CD25614F5B00950D7F /* JSONService.swift */; };
 		DFCBF6A1255FFDE100CD1A2C /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCBF6A0255FFDE100CD1A2C /* PostTableViewController.swift */; };
 		DFCBF6A4255FFE0C00CD1A2C /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCBF6A3255FFE0C00CD1A2C /* PostTableViewCell.swift */; };
 		DFD23ED52551817400583AB1 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD23ED42551817400583AB1 /* MyViewModel.swift */; };
@@ -31,6 +32,7 @@
 		DF31308E2550B31700E40993 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		DF31308F2550B31700E40993 /* HTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		DF3130912550B31700E40993 /* UseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		DF48B6CD25614F5B00950D7F /* JSONService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONService.swift; sourceTree = "<group>"; };
 		DFCBF6A0255FFDE100CD1A2C /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
 		DFCBF6A3255FFE0C00CD1A2C /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		DFD23ED42551817400583AB1 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				DF31308D2550B31700E40993 /* PersistenceManager.swift */,
 				DF31308E2550B31700E40993 /* Repository.swift */,
 				DF31308F2550B31700E40993 /* HTTPService.swift */,
+				DF48B6CD25614F5B00950D7F /* JSONService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF48B6CE25614F5B00950D7F /* JSONService.swift in Sources */,
 				DF3130952550B31700E40993 /* Repository.swift in Sources */,
 				DF3130932550B31700E40993 /* HTTPRequester.swift in Sources */,
 				DFF5A37A254F06020011D7DC /* ViewController.swift in Sources */,
@@ -341,7 +345,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NR5L3Y36QV;
 				INFOPLIST_FILE = AppTestBoiko/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,7 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NR5L3Y36QV;
 				INFOPLIST_FILE = AppTestBoiko/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

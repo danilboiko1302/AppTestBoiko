@@ -63,7 +63,8 @@ class HTTPService{
                 }
             }
             if(add){
-                PersistenceManager.resData.append(PostStr(author: item.data.author, domain: item.data.domain, created: item.data.created.description, title: item.data.title, numComments: item.data.numComments.description, ups: item.data.ups.description, downs: item.data.downs.description, thumbnail: item.data.thumbnail))
+                
+                PersistenceManager.resData.append(PostStr(author: item.data.author, domain: item.data.domain, created: item.data.created.description, title: item.data.title, numComments: item.data.numComments.description, ups: item.data.ups.description, downs: item.data.downs.description, thumbnail: item.data.thumbnail, saved: false))
             
             }
            }

@@ -16,11 +16,11 @@ class UseCase{
     }
     
     static func saved(name:String, title:String){
-        print(dataArr)
-        print(title)
+        //print(dataArr)
+        //print(title)
         for item in (0...dataArr.count - 1 ){
             if( dataArr[item].title ==  title){
-                print("go")
+             //   print("go")
                 dataArr[item].saved = !dataArr[item].saved
                 Repository.updateSavedPost(title: title)
                 break
@@ -52,14 +52,7 @@ class UseCase{
         
         dataArr = []
         for i in data{
-            var add = true
-            for j in dataArr{
-                if( i.author == j.author && i.title == j.title){
-                    add = false
-                    break
-                }
-            }
-            if(add){
+            
                 if i.thumbnail != "self"{
                     //print("asdasd")
                     let data = requestForImage(i.thumbnail)
@@ -68,7 +61,7 @@ class UseCase{
                     //print(i.thumbnail)
                     dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, saved: i.saved))
                 }
-            }
+            
            
             
             

@@ -45,9 +45,7 @@ class MyViewModel {
     func updatePost(){
         var posts: [Post] = []
         for post in UseCase.dataArr {
-            if(post.saved){
-                print("saved")
-            }
+            
             var timeInterval = post.created.timeIntervalSinceNow
                     var timeStr = ""
                     if(timeInterval < 0 ){
@@ -100,6 +98,7 @@ class MyViewModel {
 //        delegate?.updateTime(timeStr)
 //        delegate?.updateTitle(post.title)
 //        delegate?.updateUserName(post.author)
+       
         delegateArr?.update(posts)
     }
 }

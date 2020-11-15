@@ -32,11 +32,8 @@ class PostTableViewController: UITableViewController, DelegateArr{
     func update(_ data: [Post]){
         loadingData = false
         self.data = data
-        
-        
-           
        
-       reload()
+        reload()
         
     
     }
@@ -59,9 +56,9 @@ class PostTableViewController: UITableViewController, DelegateArr{
         //super.viewWillAppear(animated)()
        
         if(data.count == 0){
-            
-            myViewModel.update()
             myViewModel.delegateArr = self
+            myViewModel.update()
+           
         }
        
     }
@@ -85,26 +82,16 @@ class PostTableViewController: UITableViewController, DelegateArr{
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
             let contentHeight = scrollView.contentSize.height
-        //print(offsetY)
-        //print(contentHeight - scrollView.frame.height)
+        
             if contentHeight - scrollView.frame.height > 0{
                 loadingData = true
+               
             }
-        if (self.lastContentOffset > scrollView.contentOffset.y) {
-                // move up
-            }
-            else if (self.lastContentOffset < scrollView.contentOffset.y) {
-               // move down
-            }
-
-            // update the new position acquired
-        
-            self.lastContentOffset = scrollView.contentOffset.y
         }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as! PostTableViewCell
-           
+          
         if (loadingData && indexPath.row == data.count - 1) {
           
             myViewModel.update()
@@ -132,16 +119,9 @@ class PostTableViewController: UITableViewController, DelegateArr{
         case "moveNext":
            
             if let indexPath = (sender as? IndexPath)?.row{
-                
-            
-                   
                 let a = segue.destination as! ViewController
                 a.updateFull(data[indexPath], pos:indexPath)
-                
                 }
-            
-            
-           
         default:
             ()
         }
