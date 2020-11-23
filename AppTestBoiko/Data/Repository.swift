@@ -32,6 +32,7 @@ class Repository{
         for item in PersistenceManager.resData{
             if item.saved {
                 res.append(item)
+                print(item.url)
             }
         }
         JSONService.save(arr: res)

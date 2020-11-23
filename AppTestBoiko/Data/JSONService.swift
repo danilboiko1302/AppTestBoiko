@@ -14,7 +14,7 @@ class JSONService{
                 let text2 = try String(contentsOf: filename, encoding: .utf8)
             let data = text2.data(using: .utf8)!
             let res: [PostStr] = try! JSONDecoder().decode(Array<PostStr>.self, from: data)
-           
+            //let res: [PostStr] = []
             for item in res{
                 var add = true
                 for j in PersistenceManager.resData{
@@ -26,7 +26,7 @@ class JSONService{
                 }
                 if(add){
                     
-                    PersistenceManager.resData.append(PostStr(author: item.author, domain: item.domain, created: item.created.description, title: item.title, numComments: item.numComments.description, ups: item.ups.description, downs: item.downs.description, thumbnail: item.thumbnail, saved: true))
+                    PersistenceManager.resData.append(PostStr(author: item.author, domain: item.domain, created: item.created.description, title: item.title, numComments: item.numComments.description, ups: item.ups.description, downs: item.downs.description, thumbnail: item.thumbnail, saved: true, url: item.url))
                 
                 }
                }

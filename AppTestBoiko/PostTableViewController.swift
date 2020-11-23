@@ -10,15 +10,20 @@ protocol DelegateArr{
     func update(_ data: [Post])
     
 }
-class PostTableViewController: UITableViewController, DelegateArr{
+class PostTableViewController: UITableViewController, DelegateArr, UITextFieldDelegate{
     
     var saved:Bool = false
     
+    @IBOutlet private weak var searchField: UITextField!
     @IBOutlet private weak var savedButton: UIBarButtonItem!
     @IBAction private func savedButtonClick(_ sender: Any) {
         UseCase.changeSaved()
         saved = !saved
+        searchField.isHidden = !searchField.isHidden
+        searchField.isEnabled =  !searchField.isEnabled
+        
     }
+    
     func reload(){
         DispatchQueue.main.async {
            
@@ -31,6 +36,7 @@ class PostTableViewController: UITableViewController, DelegateArr{
     
     func update(_ data: [Post]){
         loadingData = false
+        
         self.data = data
        
         reload()
@@ -45,7 +51,8 @@ class PostTableViewController: UITableViewController, DelegateArr{
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.searchField.delegate = self
+        self.hideKeyboardWhenTappedAround()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -54,7 +61,8 @@ class PostTableViewController: UITableViewController, DelegateArr{
     }
     override func viewWillAppear(_ animated: Bool) {
         //super.viewWillAppear(animated)()
-       
+        searchField.isHidden = !saved
+        searchField.isEnabled =  saved
         if(data.count == 0){
             myViewModel.delegateArr = self
             myViewModel.update()
@@ -62,9 +70,33 @@ class PostTableViewController: UITableViewController, DelegateArr{
         }
        
     }
-
+    
+    func textField(_ textField: UITextField,
+                    shouldChangeCharactersIn range: NSRange,
+                    replacementString string: String) -> Bool{
+       
+        myViewModel.filter(searchField.text!)
+        return true
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        myViewModel.filter(searchField.text!)
+        
+        searchField.endEditing(true)
+            return true
+        }
+    
     // MARK: - Table view data source
-
+    func hideKeyboardWhenTappedAround() {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            tap.cancelsTouchesInView = false
+            view.addGestureRecognizer(tap)
+        }
+        
+        @objc func dismissKeyboard() {
+            myViewModel.filter(searchField.text!)
+            
+            searchField.endEditing(true)
+        }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -120,6 +152,7 @@ class PostTableViewController: UITableViewController, DelegateArr{
            
             if let indexPath = (sender as? IndexPath)?.row{
                 let a = segue.destination as! ViewController
+                
                 a.updateFull(data[indexPath], pos:indexPath)
                 }
         default:

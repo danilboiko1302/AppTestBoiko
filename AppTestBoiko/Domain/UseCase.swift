@@ -10,6 +10,14 @@ class UseCase{
     static var  data:Post = Post()
     static var  dataArr:[Post] = []
     static var  image:Data = Data()
+    static var  copy:[Post] = []
+    static func getDat(_ str:String){
+        if(copy.count == 0){
+            copy = dataArr
+        }
+        
+    }
+    
     
     static func changeSaved(){
         Repository.changeSaved()
@@ -52,14 +60,35 @@ class UseCase{
         
         dataArr = []
         for i in data{
+            var timeInterval = Date(timeIntervalSince1970: Double(i.created)!).timeIntervalSinceNow
+                    var timeStr = ""
+                    if(timeInterval < 0 ){
+                        timeInterval = -timeInterval
+                    }
             
+                    if(timeInterval < 60){
+                        timeStr = "\(Int(timeInterval)) sec"
+                    } else if(timeInterval < 3600){
+                        timeStr = "\(Int(timeInterval/60)) min"
+                    }  else if(timeInterval < (3600 * 24)){
+                        timeStr = "\(Int(timeInterval/3600)) hour"
+                    } else if(timeInterval < (3600  * 24*7)){
+                        timeStr = "\(Int(timeInterval/3600/24)) days"
+                    } else if(timeInterval < (2592000)){
+                        timeStr = "\(Int(timeInterval/3600/24/7)) weeks"
+                    } else if(timeInterval < (31556926)){
+                        timeStr = "\(Int(timeInterval/3600/24/7/4)) months"
+                    } else {
+                        timeStr = "\(Int(timeInterval/3600/24/7/4/12)) years"
+                    }
+              //  print(i.url)
                 if i.thumbnail != "self"{
                     //print("asdasd")
                     let data = requestForImage(i.thumbnail)
-                    dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, image: data, saved: i.saved))
+                    dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), createdStr: timeStr, title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, image: data, saved: i.saved, url: i.url))
                 } else {
                     //print(i.thumbnail)
-                    dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, saved: i.saved))
+                    dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), createdStr: timeStr, title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, saved: i.saved, url: i.url))
                 }
             
            

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i80-ep-0O7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i80-ep-0O7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +12,6 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AppTestBoiko" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -45,18 +44,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mdo-mW-0cE">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzA-yT-76d" customClass="UIBookmark" customModule="AppTestBoiko" customModuleProvider="target">
                                                         <rect key="frame" x="280" y="0.0" width="40" height="50"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="40" id="LXz-2l-KqL"/>
-                                                            <constraint firstAttribute="height" constant="50" id="t71-2p-77X"/>
+                                                            <constraint firstAttribute="height" constant="50" id="bXQ-5z-VGr"/>
+                                                            <constraint firstAttribute="width" constant="40" id="iSH-Jb-SYz"/>
                                                         </constraints>
-                                                        <state key="normal" image="bookmark" catalog="system"/>
-                                                        <state key="selected" image="bookmark.fill" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="bookmarkPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="21f-OS-uPs"/>
-                                                        </connections>
-                                                    </button>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -133,7 +128,6 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="BShare_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rxq-ra-tKn"/>
-                                                            <action selector="shareClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="td7-0c-E1X"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -194,7 +188,7 @@
                     <connections>
                         <outlet property="BShare" destination="ceP-kf-6oB" id="AKa-4W-05k"/>
                         <outlet property="ViewImage" destination="Pnk-oh-EvS" id="3Fn-cS-sNj"/>
-                        <outlet property="bookmark" destination="Mdo-mW-0cE" id="r44-wi-yXL"/>
+                        <outlet property="bookmark" destination="NzA-yT-76d" id="IYG-3a-Llm"/>
                         <outlet property="comments" destination="REv-f0-d5V" id="uhD-Gf-jyu"/>
                         <outlet property="domain" destination="c26-wv-iBe" id="dZn-Nh-XmN"/>
                         <outlet property="image" destination="6Us-NJ-I2V" id="aTh-tH-HYm"/>
@@ -204,6 +198,7 @@
                         <outlet property="userName" destination="KBx-gN-Yws" id="Z4D-Am-p3F"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064" y="80"/>
         </scene>
@@ -211,24 +206,24 @@
         <scene sceneID="hPB-xy-1K5">
             <objects>
                 <tableViewController id="DgN-Wb-iY5" customClass="PostTableViewController" customModule="AppTestBoiko" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="39g-OU-EWo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="350" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="39g-OU-EWo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
                         <color key="sectionIndexBackgroundColor" systemColor="systemGray3Color"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseCell" id="6xo-Vu-gnv" customClass="PostTableViewCell" customModule="AppTestBoiko" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="350"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6xo-Vu-gnv" id="Pgd-S7-iYb">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgB-UH-qhr">
-                                            <rect key="frame" x="47" y="-138.5" width="320" height="320.5"/>
+                                            <rect key="frame" x="47" y="15" width="320" height="320"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KIb-Oa-Aqc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8q-fI-gDQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -303,10 +298,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPO-xT-dgo">
-                                                            <rect key="frame" x="0.0" y="100" width="320" height="170.5"/>
+                                                            <rect key="frame" x="0.0" y="100" width="320" height="170"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UfU-bd-d2F">
-                                                                    <rect key="frame" x="0.0" y="0.5" width="320" height="169.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.5" width="320" height="169"/>
                                                                     <imageReference key="image" image="nosign" catalog="system" renderingMode="original"/>
                                                                 </imageView>
                                                             </subviews>
@@ -319,7 +314,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZO-lL-ERj">
-                                                            <rect key="frame" x="0.0" y="270.5" width="320" height="50"/>
+                                                            <rect key="frame" x="0.0" y="270" width="320" height="50"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OG-Eg-9f8">
                                                                     <rect key="frame" x="0.0" y="0.0" width="106.5" height="50"/>
@@ -340,7 +335,6 @@
                                                                     </state>
                                                                     <connections>
                                                                         <action selector="BShare_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xhf-iz-MYn"/>
-                                                                        <action selector="shareClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z4a-Hh-VyO"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -356,8 +350,8 @@
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
-                                                                    <exclude reference="oXx-PW-X5k"/>
                                                                     <exclude reference="byb-bu-cp4"/>
+                                                                    <exclude reference="oXx-PW-X5k"/>
                                                                     <exclude reference="hrv-6N-CFu"/>
                                                                     <exclude reference="uVp-9I-Nao"/>
                                                                 </mask>
@@ -414,6 +408,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="wqW-aS-3A0">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="Hj4-b4-jJH">
+                            <rect key="frame" x="132" y="5" width="150" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <barButtonItem key="rightBarButtonItem" title="Saved" id="XDz-C6-sqq">
                             <connections>
                                 <action selector="savedButtonClick:" destination="DgN-Wb-iY5" id="Dal-vn-glc"/>
@@ -422,6 +423,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="savedButton" destination="XDz-C6-sqq" id="yBI-No-NNg"/>
+                        <outlet property="searchField" destination="Hj4-b4-jJH" id="90T-Nn-3cd"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="moveNext" id="cHF-9V-TwE"/>
                     </connections>
                 </tableViewController>

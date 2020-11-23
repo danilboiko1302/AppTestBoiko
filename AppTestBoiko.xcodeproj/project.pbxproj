@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF060A58256C4DC500F69CAE /* UIBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF060A57256C4DC500F69CAE /* UIBookmark.swift */; };
 		DF3130922550B31700E40993 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31308A2550B31700E40993 /* Post.swift */; };
 		DF3130932550B31700E40993 /* HTTPRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31308C2550B31700E40993 /* HTTPRequester.swift */; };
 		DF3130942550B31700E40993 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31308D2550B31700E40993 /* PersistenceManager.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF060A57256C4DC500F69CAE /* UIBookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBookmark.swift; sourceTree = "<group>"; };
 		DF31308A2550B31700E40993 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		DF31308C2550B31700E40993 /* HTTPRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequester.swift; sourceTree = "<group>"; };
 		DF31308D2550B31700E40993 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				DFD23ED42551817400583AB1 /* MyViewModel.swift */,
 				DFCBF6A0255FFDE100CD1A2C /* PostTableViewController.swift */,
 				DFCBF6A3255FFE0C00CD1A2C /* PostTableViewCell.swift */,
+				DF060A57256C4DC500F69CAE /* UIBookmark.swift */,
 			);
 			path = AppTestBoiko;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				DF48B6CE25614F5B00950D7F /* JSONService.swift in Sources */,
 				DF3130952550B31700E40993 /* Repository.swift in Sources */,
 				DF3130932550B31700E40993 /* HTTPRequester.swift in Sources */,
+				DF060A58256C4DC500F69CAE /* UIBookmark.swift in Sources */,
 				DFF5A37A254F06020011D7DC /* ViewController.swift in Sources */,
 				DFF5A376254F06020011D7DC /* AppDelegate.swift in Sources */,
 				DFD23ED52551817400583AB1 /* MyViewModel.swift in Sources */,
