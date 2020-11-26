@@ -12,10 +12,10 @@ class JSONService{
     private static let filenameImage = getDocumentsDirectory().appendingPathComponent("savedImages.txt")
     static func loadSaved(){
         do {
-                let text2 = try String(contentsOf: filename, encoding: .utf8)
+            let text2 = try String(contentsOf: filename, encoding: .utf8)
             let data = text2.data(using: .utf8)!
             let res: [PostStr] = try! JSONDecoder().decode(Array<PostStr>.self, from: data)
-            //let res: [PostStr] = []
+            // let res: [PostStr] = []
             for item in res{
                 var add = true
                 for j in PersistenceManager.resData{
@@ -28,18 +28,18 @@ class JSONService{
                 if(add){
                     
                     PersistenceManager.resData.append(PostStr(author: item.author, domain: item.domain, created: item.created.description, title: item.title, numComments: item.numComments.description, ups: item.ups.description, downs: item.downs.description, thumbnail: item.thumbnail, saved: true, url: item.url, comments: item.comments))
-                
+                    
                 }
-               }
-            
             }
-            catch {}
+            
+        }
+        catch {}
         
     }
     static func loadImage(title:String)->Data?{
         //print("Repository load Image")
         do {
-                let text2 = try String(contentsOf: filenameImage, encoding: .utf8)
+            let text2 = try String(contentsOf: filenameImage, encoding: .utf8)
             let data = text2.data(using: .utf8)!
             let res: [Image] = try! JSONDecoder().decode(Array<Image>.self, from: data)
             
@@ -47,10 +47,10 @@ class JSONService{
                 if item.title == title{
                     return item.image
                 }
-               }
-            
             }
-            catch {}
+            
+        }
+        catch {}
         return nil
     }
     

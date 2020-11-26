@@ -8,7 +8,7 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var userName: UILabel!
     @IBOutlet private weak var time: UILabel!
     @IBOutlet private weak var domain: UILabel!
@@ -17,13 +17,13 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet private weak var likes: UILabel!
     @IBOutlet private weak var comments: UILabel!
     @IBOutlet private weak var bookmark: UIButton!
-   
+    
     override func prepareForReuse() {
         userName.text = nil
         time.text = nil
         domain.text = nil
         titleName.text = nil
-       imageData.image = nil
+        imageData.image = nil
         likes.text = nil
         comments.text = nil
         bookmark.isSelected = false
@@ -33,11 +33,11 @@ class PostTableViewCell: UITableViewCell {
         time.text = " " + post.createdStr + "  "
         domain.text = post.domain
         titleName.text = post.title
-       
+        
         if let data = post.image{
             imageData.image = UIImage(data: data)
             //print(data)
-           
+            
         } else{
             imageData.image = UIImage(systemName: "nosign")
         }
@@ -50,12 +50,12 @@ class PostTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-
+    
 }

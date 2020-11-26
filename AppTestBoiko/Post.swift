@@ -105,7 +105,7 @@ struct PostStr: Codable{
         case saved
         case url
         case comments
-      }
+    }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(author, forKey: .author)
@@ -119,8 +119,8 @@ struct PostStr: Codable{
         try container.encode(saved, forKey: .saved)
         try container.encode(url, forKey: .url)
         try container.encode(comments, forKey: .comments)
-      }
-      init(from decoder: Decoder) throws {
+    }
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         author = try container.decode(String.self, forKey: .author)
         domain = try container.decode(String.self, forKey: .domain)
@@ -133,7 +133,7 @@ struct PostStr: Codable{
         saved = try container.decode(Bool.self, forKey: .saved)
         url = try container.decode(String.self, forKey: .url)
         comments = try container.decode(Array<Comment>.self, forKey: .comments)
-      }
+    }
     init(author: String, domain: String, created: String, title: String, numComments: String, ups: String, downs: String, thumbnail: String, saved: Bool, url: String, comments:[Comment]){
         self.author = author
         self.domain = domain
@@ -180,6 +180,7 @@ struct Comment1: Decodable {
         let container = try decoder.container(keyedBy: Data.self)
         data = try container.decode(Comment2.self, forKey: .data)
     }
+    
 }
 struct Comment2: Decodable {
     let children: [Comment3]
@@ -188,10 +189,11 @@ struct Comment2: Decodable {
         case children
     }
     init(from decoder: Decoder) throws {
-       
+        
         let container = try decoder.container(keyedBy: Data.self)
         children = try container.decode(Array<Comment3>.self, forKey: .children)
     }
+    
 }
 struct Comment3: Decodable {
     let data: Comment
@@ -199,30 +201,50 @@ struct Comment3: Decodable {
         case data
     }
     init(from decoder: Decoder) throws {
-       
+        
         let container = try decoder.container(keyedBy: Data.self)
         data = try container.decode(Comment.self, forKey: .data)
     }
+    
 }
 
 struct Comment: Codable {
+    //static let counter:Int = 0
+    
+    
     var author: String = ""
     var body: String? = nil
     var created: Int = 0
     var score: Int = 0
+    var replies: Comment1? = nil
+    var permalink: String = ""
     enum Data: String, CodingKey {
         case author
         case body
         case score
         case created
+        case replies
+        case permalink
     }
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: Data.self)
+        
         author = try container.decode(String.self, forKey: .author)
         body = try? container.decode(String.self, forKey: .body)
+        
         score = try container.decode(Int.self, forKey: .score)
         created = try container.decode(Int.self, forKey: .created)
+        permalink = "https://www.reddit.com" + (try container.decode(String.self, forKey: .permalink))
+        do {
+            replies = try container.decode(Comment1.self, forKey: .replies)
+        } catch DecodingError.typeMismatch {
+            
+        } catch DecodingError.keyNotFound{
+            
+        }
+        
+        
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: Data.self)
@@ -230,8 +252,9 @@ struct Comment: Codable {
         try container.encode(body, forKey: .body)
         try container.encode(score, forKey: .score)
         try container.encode(created, forKey: .created)
- 
-      }
+        try container.encode(permalink, forKey: .permalink)
+        
+    }
     init(author:String, body:String, created:Int, score:Int){
         self.author = author
         self.body = body
@@ -243,19 +266,19 @@ struct Image: Codable {
     enum CodingKeys: String, CodingKey {
         case title
         case image
-      }
+    }
     init(from decoder: Decoder) throws {
-      let container = try decoder.container(keyedBy: CodingKeys.self)
-     
-      title = try container.decode(String.self, forKey: .title)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        title = try container.decode(String.self, forKey: .title)
         image = try container.decode(Data.self, forKey: .image)
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(image, forKey: .image)
         try container.encode(title, forKey: .title)
- 
-      }
+        
+    }
     init(title: String, image:Data?) {
         self.title = title
         self.image = image

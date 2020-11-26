@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DF060A58256C4DC500F69CAE /* UIBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF060A57256C4DC500F69CAE /* UIBookmark.swift */; };
+		DF092D332570653700F96F74 /* CommentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF092D322570653700F96F74 /* CommentDetails.swift */; };
 		DF128A88256ED70100998B26 /* CommentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF128A87256ED70100998B26 /* CommentRow.swift */; };
 		DF128A8B256ED95500998B26 /* CommentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF128A8A256ED95500998B26 /* CommentList.swift */; };
 		DF3130922550B31700E40993 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31308A2550B31700E40993 /* Post.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		DF060A57256C4DC500F69CAE /* UIBookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBookmark.swift; sourceTree = "<group>"; };
+		DF092D322570653700F96F74 /* CommentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDetails.swift; sourceTree = "<group>"; };
 		DF128A87256ED70100998B26 /* CommentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRow.swift; sourceTree = "<group>"; };
 		DF128A8A256ED95500998B26 /* CommentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentList.swift; sourceTree = "<group>"; };
 		DF31308A2550B31700E40993 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				DF060A57256C4DC500F69CAE /* UIBookmark.swift */,
 				DF128A87256ED70100998B26 /* CommentRow.swift */,
 				DF128A8A256ED95500998B26 /* CommentList.swift */,
+				DF092D322570653700F96F74 /* CommentDetails.swift */,
 			);
 			path = AppTestBoiko;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				DF3130972550B31700E40993 /* UseCase.swift in Sources */,
 				DFCBF6A1255FFDE100CD1A2C /* PostTableViewController.swift in Sources */,
 				DF128A8B256ED95500998B26 /* CommentList.swift in Sources */,
+				DF092D332570653700F96F74 /* CommentDetails.swift in Sources */,
 				DF128A88256ED70100998B26 /* CommentRow.swift in Sources */,
 				DFF5A378254F06020011D7DC /* SceneDelegate.swift in Sources */,
 				DF3130922550B31700E40993 /* Post.swift in Sources */,

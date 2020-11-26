@@ -9,7 +9,7 @@ import Foundation
 class Repository{
     
     
- 
+    
     
     
     
@@ -43,10 +43,10 @@ class Repository{
         JSONService.save(arr: res,images: resImage)
         
         
-       // print(PersistenceManager.resData)
+        // print(PersistenceManager.resData)
     }
     
-   
+    
     static func requestForUpdate(){
         if (firstLoad){
             firstLoad = false
@@ -60,13 +60,13 @@ class Repository{
     
     
     static func requestForImage(_ str:String)->Data?{
-      
-          return HTTPService.loadImage(url: str)
+        
+        return HTTPService.loadImage(url: str)
         
     }
     static func requestForImageSaved(_ title:String)->Data?{
         print("Repository load Image")
-          return JSONService.loadImage(title: title)
+        return JSONService.loadImage(title: title)
         
     }
     static func changeSaved(){
@@ -74,10 +74,10 @@ class Repository{
         saved = !saved
         updatePostArr()
     }
-  
+    
     static func updatePostArr(){
-       
-       // print("I am Repository, info in PersistenceManager changed, I need to send it back to UserCase.")
+        
+        // print("I am Repository, info in PersistenceManager changed, I need to send it back to UserCase.")
         if (saved){
             var res: [PostStr] = []
             for item in PersistenceManager.resData{
@@ -92,7 +92,7 @@ class Repository{
         }
         
     }
-   
+    
     static func getInfo()->[PostStr]{
         return PersistenceManager.resData
     }

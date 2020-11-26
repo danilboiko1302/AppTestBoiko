@@ -43,7 +43,7 @@ class ViewController: UIViewController, Delegate {
     }
     
     @objc func tapDetected() {
-       // print("op")
+        // print("op")
         bookmark.save()
         //bookmark.isSelected = !bookmark.isSelected
         UseCase.saved(name: userName!.text!, title: titleName!.text!)
@@ -53,13 +53,13 @@ class ViewController: UIViewController, Delegate {
         
         items.append(URL(string: post.url)!)
         
-
+        
         //Action
-       
-
+        
+        
         // function which is triggered when handleTap is called
         func handleTap(_ sender: UITapGestureRecognizer) {
-          //  print("Hello World")
+            //  print("Hello World")
         }
         position = pos
         updateTitle(post.title)
@@ -76,7 +76,7 @@ class ViewController: UIViewController, Delegate {
             }
         }
         
-       
+        
         updateDomain(post.domain)
         updateLikes("\u{1F44D}" + (post.ups - post.downs).description)
         updateComments("\u{1F4AC}" + post.numComments.description)
@@ -143,27 +143,29 @@ class ViewController: UIViewController, Delegate {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.tapDetected))
         self.bookmark.isUserInteractionEnabled = true
         self.bookmark.addGestureRecognizer(singleTap)
-//        let circleView = CommentList(comments: [Comment(author: "1", body: "2", time: "3"),Comment(author: "11", body: "22", time: "33"),Comment(author: "1", body: "2", time: "3"),Comment(author: "11", body: "22", time: "33")])
-//
-//        let controller = UIHostingController(rootView: circleView)
-//        addChild(controller)
-//                controller.view.translatesAutoresizingMaskIntoConstraints = false
-//                commentsView.addSubview(controller.view)
-//                controller.didMove(toParent: self)
-        print(temp)
-        let a = CommentList(comments:temp)
-        let childView = UIHostingController(rootView: a)
+        //        let circleView = CommentList(comments: [Comment(author: "1", body: "2", time: "3"),Comment(author: "11", body: "22", time: "33"),Comment(author: "1", body: "2", time: "3"),Comment(author: "11", body: "22", time: "33")])
+        //
+        //        let controller = UIHostingController(rootView: circleView)
+        //        addChild(controller)
+        //                controller.view.translatesAutoresizingMaskIntoConstraints = false
+        //                commentsView.addSubview(controller.view)
+        //                controller.didMove(toParent: self)
+        if temp.count != 0{
+            let a = CommentList(comments:temp)
+            let childView = UIHostingController(rootView: a)
+            
+            addChild(childView)
+            
+            childView.view.frame = commentsView.frame
+            
+            view.addSubview(childView.view)
+            childView.didMove(toParent: self)
+        }
         
-        addChild(childView)
-        
-        childView.view.frame = commentsView.frame
-        
-        view.addSubview(childView.view)
-        childView.didMove(toParent: self)
         
         
-//        myViewModel.update()
-//        myViewModel.delegate = self
+        //        myViewModel.update()
+        //        myViewModel.delegate = self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

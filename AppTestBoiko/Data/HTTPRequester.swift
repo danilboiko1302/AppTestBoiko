@@ -9,20 +9,20 @@ import Foundation
 class HTTPRequester{
     typealias CompletionHandler = (_ data:Data?) -> Void
     static func getRequest(_ url:String,  completionHandler: @escaping CompletionHandler) {
-    
+        
         let defaultSession = URLSession(configuration: .default)
         
         var dataTask: URLSessionDataTask?
-       
+        
         dataTask?.cancel()
-       
+        
         if let urlComponents = URLComponents(string: url) {
-           
+            
             if let url = urlComponents.url {
-               
+                
                 dataTask =
                     defaultSession.dataTask(with: url)  {  data, response, error in
-                       
+                        
                         if let error = error {
                             
                             print(error.localizedDescription)
@@ -39,28 +39,28 @@ class HTTPRequester{
         }
     }
     static func loadImage(url:URL,  completionHandler: @escaping CompletionHandler){
-       // print("Download Started")
-       // print("LOAD")
+        // print("Download Started")
+        // print("LOAD")
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
             //print(response?.suggestedFilename ?? url.lastPathComponent)
-           // print("Download Finished")
+            // print("Download Finished")
             completionHandler( data)
         }
         
     }
     static func loadImage(url:URL)->Data?{
         return try? Data(contentsOf: url)
-//        DispatchQueue.global().async {
-//                    if let data = try? Data(contentsOf: url) {
-//                        if let image = UIImage(data: data) {
-//                            Dispatch.DispatchQueue.main.async {
-//                                self?.image.image = image
-//                            }
-//                        }
-//                    }
-//                }
-//        return nil;
+        //        DispatchQueue.global().async {
+        //                    if let data = try? Data(contentsOf: url) {
+        //                        if let image = UIImage(data: data) {
+        //                            Dispatch.DispatchQueue.main.async {
+        //                                self?.image.image = image
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //        return nil;
         
     }
     

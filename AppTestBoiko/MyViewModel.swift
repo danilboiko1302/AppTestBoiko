@@ -35,7 +35,7 @@ class MyViewModel {
     func updateImageNotification() {
         updateImage()
     }
-
+    
     func updateImage(){
         let image = UseCase.image
         delegate?.updateImage(image)
@@ -58,6 +58,6 @@ class MyViewModel {
             }
             delegateArr?.update(res)
         }
-       
+        
     }
 }
