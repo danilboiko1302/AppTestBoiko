@@ -68,8 +68,11 @@ class PostTableViewController: UITableViewController, DelegateArr, UITextFieldDe
             myViewModel.update()
            
         }
+        AppUtility.lockOrientation(.portrait)
        
     }
+
+
     
     func textField(_ textField: UITextField,
                     shouldChangeCharactersIn range: NSRange,
@@ -164,7 +167,11 @@ class PostTableViewController: UITableViewController, DelegateArr, UITextFieldDe
         //print("AAO")
         self.performSegue(withIdentifier: "moveNext", sender: indexPath)
     }
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+      
+            return .portrait
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -203,5 +210,24 @@ class PostTableViewController: UITableViewController, DelegateArr, UITextFieldDe
     
     
     
+
+}
+struct AppUtility {
+
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+    
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.orientationLock = orientation
+        }
+    }
+
+    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+   
+        self.lockOrientation(orientation)
+    
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+        UINavigationController.attemptRotationToDeviceOrientation()
+    }
 
 }

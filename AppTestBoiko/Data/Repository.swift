@@ -9,9 +9,7 @@ import Foundation
 class Repository{
     
     
-    static func loadSaved(){
-        
-    }
+ 
     
     
     
@@ -29,13 +27,20 @@ class Repository{
             }
         }
         var res: [PostStr] = []
+        var resImage: [Image] = []
         for item in PersistenceManager.resData{
             if item.saved {
                 res.append(item)
-                print(item.url)
+                for j in UseCase.dataArr{
+                    if j.title == item.title{
+                        if let data = j.image{
+                            resImage.append(Image(title: j.title, image: data))
+                        }
+                    }
+                }
             }
         }
-        JSONService.save(arr: res)
+        JSONService.save(arr: res,images: resImage)
         
         
        // print(PersistenceManager.resData)
@@ -59,7 +64,11 @@ class Repository{
           return HTTPService.loadImage(url: str)
         
     }
-    
+    static func requestForImageSaved(_ title:String)->Data?{
+        print("Repository load Image")
+          return JSONService.loadImage(title: title)
+        
+    }
     static func changeSaved(){
         
         saved = !saved

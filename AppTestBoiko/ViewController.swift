@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 protocol Delegate {
     func updateUserName(_ str:String)
     func updateTime(_ str:String)
@@ -19,7 +20,7 @@ class ViewController: UIViewController, Delegate {
     
     
     private let main = DispatchQueue.main
-    
+    private var temp:[Comment] = []
     private var position: Int = 0
     var items:[URL] = []
     @IBOutlet private weak var bookmark: UIBookmark!
@@ -33,6 +34,7 @@ class ViewController: UIViewController, Delegate {
     //@IBOutlet private weak var bookmark: UIButton!
     @IBOutlet private weak var ViewImage: UIView!
     
+    @IBOutlet private weak var commentsView: UIView!
     @IBOutlet private weak var BShare: UIButton!
     @IBAction func BShare_click(_ sender: Any) {
         
@@ -41,12 +43,14 @@ class ViewController: UIViewController, Delegate {
     }
     
     @objc func tapDetected() {
-        print("op")
+       // print("op")
         bookmark.save()
         //bookmark.isSelected = !bookmark.isSelected
         UseCase.saved(name: userName!.text!, title: titleName!.text!)
     }
     func updateFull(_ post:Post, pos:Int){
+        temp = post.comments
+        
         items.append(URL(string: post.url)!)
         
 
@@ -55,7 +59,7 @@ class ViewController: UIViewController, Delegate {
 
         // function which is triggered when handleTap is called
         func handleTap(_ sender: UITapGestureRecognizer) {
-            print("Hello World")
+          //  print("Hello World")
         }
         position = pos
         updateTitle(post.title)
@@ -139,13 +143,32 @@ class ViewController: UIViewController, Delegate {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.tapDetected))
         self.bookmark.isUserInteractionEnabled = true
         self.bookmark.addGestureRecognizer(singleTap)
+//        let circleView = CommentList(comments: [Comment(author: "1", body: "2", time: "3"),Comment(author: "11", body: "22", time: "33"),Comment(author: "1", body: "2", time: "3"),Comment(author: "11", body: "22", time: "33")])
+//
+//        let controller = UIHostingController(rootView: circleView)
+//        addChild(controller)
+//                controller.view.translatesAutoresizingMaskIntoConstraints = false
+//                commentsView.addSubview(controller.view)
+//                controller.didMove(toParent: self)
+        print(temp)
+        let a = CommentList(comments:temp)
+        let childView = UIHostingController(rootView: a)
+        
+        addChild(childView)
+        
+        childView.view.frame = commentsView.frame
+        
+        view.addSubview(childView.view)
+        childView.didMove(toParent: self)
+        
+        
 //        myViewModel.update()
 //        myViewModel.delegate = self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         //super.viewWillAppear(animated)()
-       
+        
         
     }
     

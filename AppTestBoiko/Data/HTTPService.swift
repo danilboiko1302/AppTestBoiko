@@ -50,6 +50,7 @@ class HTTPService{
         return nil
         
     }
+    
     static func decode(_ data:Data){
         let root:Level1 = try! JSONDecoder().decode(Level1.self, from: data)
         //print(root.data.children)
@@ -63,13 +64,29 @@ class HTTPService{
                 }
             }
             if(add){
+                HTTPRequester.getRequest(item.data.url+".json",completionHandler: { ( dataComments) -> Void in
+                    var comments:[Comment] = []
+                    if let dataCorrect = dataComments{
+                        comments = decodeComments(dataCorrect)
+                    }
+                    PersistenceManager.resData.append(PostStr(author: item.data.author, domain: item.data.domain, created: item.data.created.description, title: item.data.title, numComments: item.data.numComments.description, ups: item.data.ups.description, downs: item.data.downs.description, thumbnail: item.data.thumbnail, saved: false, url: item.data.url, comments: comments))
+                    
+                })
                 
-                PersistenceManager.resData.append(PostStr(author: item.data.author, domain: item.data.domain, created: item.data.created.description, title: item.data.title, numComments: item.data.numComments.description, ups: item.data.ups.description, downs: item.data.downs.description, thumbnail: item.data.thumbnail, saved: false, url: item.data.url))
             
             }
            }
         
 
 //        PersistenceManager.res = PostStr(author: root.data.children.data.author, domain: root.data.children.data.domain, created: root.data.children.data.created.description, title: root.data.children.data.title, numComments: root.data.children.data.numComments.description, ups: root.data.children.data.ups.description, downs: root.data.children.data.downs.description, thumbnail: root.data.children.data.thumbnail)
+    }
+    static func decodeComments(_ data:Data) ->[Comment]{
+      
+        let welcome:[Comment1] = try! JSONDecoder().decode(Array<Comment1>.self, from: data)
+        var res:[Comment] = []
+        for item in welcome[1].data.children{
+            res.append(item.data)
+        }
+        return res
     }
 }

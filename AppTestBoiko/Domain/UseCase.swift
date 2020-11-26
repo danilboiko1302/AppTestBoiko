@@ -11,12 +11,9 @@ class UseCase{
     static var  dataArr:[Post] = []
     static var  image:Data = Data()
     static var  copy:[Post] = []
-    static func getDat(_ str:String){
-        if(copy.count == 0){
-            copy = dataArr
-        }
-        
-    }
+    
+    
+   
     
     
     static func changeSaved(){
@@ -48,6 +45,10 @@ class UseCase{
         // print("Repository.requestForUpdate()")
         return Repository.requestForImage(string)
     }
+    static func requestForImageSaved (_ string: String)->Data?{
+        // print("Repository.requestForUpdate()")
+        return Repository.requestForImageSaved(string)
+    }
     static func updateImage(image: Data?){
         if let data = image{
             self.image = data
@@ -60,6 +61,7 @@ class UseCase{
         
         dataArr = []
         for i in data{
+           
             var timeInterval = Date(timeIntervalSince1970: Double(i.created)!).timeIntervalSinceNow
                     var timeStr = ""
                     if(timeInterval < 0 ){
@@ -84,11 +86,18 @@ class UseCase{
               //  print(i.url)
                 if i.thumbnail != "self"{
                     //print("asdasd")
-                    let data = requestForImage(i.thumbnail)
-                    dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), createdStr: timeStr, title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, image: data, saved: i.saved, url: i.url))
+                    var data:Data?
+                    if i.saved{
+                      //  print("UseCase load Image")
+                        data = requestForImageSaved(i.title)
+                    }else{
+                        data = requestForImage(i.thumbnail)
+                    }
+                   
+                    dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), createdStr: timeStr, title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, image: data, saved: i.saved, url: i.url, comments: i.comments))
                 } else {
                     //print(i.thumbnail)
-                    dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), createdStr: timeStr, title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, saved: i.saved, url: i.url))
+                    dataArr.append(Post(author: i.author, domain: i.domain, created: Date(timeIntervalSince1970: Double(i.created) ?? 0.0), createdStr: timeStr, title: i.title, numComments: Int(i.numComments) ?? 0, ups: Int(i.ups) ?? 0, downs: Int(i.downs) ?? 0, thumbnail: i.thumbnail, saved: i.saved, url: i.url,comments: i.comments))
                 }
             
            
@@ -98,6 +107,7 @@ class UseCase{
        
         //print("add to arr")
        // print(dataArr)
+      //  print(dataArr)
         NotificationCenter.default.post(Notification(name: notificationPost))
        // requestForImage()
     }
