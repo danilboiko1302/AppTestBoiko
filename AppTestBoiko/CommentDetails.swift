@@ -39,7 +39,8 @@ struct CommentDetails: View {
                 }
             }
             Spacer()
-        }.navigationBarHidden(true)
+        }.navigationBarTitleDisplayMode(.inline)
+        
     }
 }
 func actionSheet(_ url:String) {
